@@ -5,18 +5,16 @@ import gym from '../assets/gymdesign.webp'
 const Register = () => {
     return (
         <div>
-             <div className="flex w-full mt-8 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
+             <div className="flex w-full mt-24 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
     <div className="hidden bg-cover lg:block lg:w-1/2" style={{
         backgroundImage: `url(${gym})`
     }}></div>
 
     <div className="w-full px-6 py-8 md:px-8 lg:w-1/2">
-        <div className="flex justify-center mx-auto">
-        <h1 className='text-3xl font-extrabold text-gray-500'>GYMNECIA</h1>
-        </div>
+       
 
         <p className="mt-3 text-xl text-center text-gray-600 dark:text-gray-200">
-            Welcome back!
+            Welcome !
         </p>
 
         <div className="mt-4">
