@@ -1,10 +1,11 @@
 import { Outlet } from "react-router-dom";
+import Nav from "../components/Nav";
 
 
 const Root = () => {
     return (
-        <div>
-            <h1 className="text-3xl">fitness tracker</h1>
+        <div className='container mx-auto lg:px-12 py-8 px-3 '>
+          <Nav></Nav>
             <Outlet></Outlet>
             
         </div>
