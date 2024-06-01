@@ -14,7 +14,7 @@ const Nav = () => {
            <nav className="relative bg-white shadow dark:bg-gray-800">
                 <div className="container px-6 py-4 mx-auto md:flex md:justify-between md:items-center">
                     <div className="flex items-center justify-between">
-                        <h1 className='text-3xl font-extrabold text-violet-500'>YOGATIA</h1>
+                        <h1 className='text-3xl font-extrabold text-gray-500'>GYMNECIA</h1>
 
                         {/* Mobile menu button */}
                         <div className="flex lg:hidden">
@@ -46,7 +46,7 @@ const Nav = () => {
                         <button type="button" className="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
                         <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
                             
-                            <FaUserAlt className="object-cover w-full h-full text-violet-500" />
+                            <FaUserAlt className="object-cover w-full h-full text-gray-500" />
                         </div>
 
                         
