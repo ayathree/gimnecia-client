@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import gym from '../assets/gymdesign.webp'
 import { useForm } from "react-hook-form";
 import GoogleLogin from "../components/GoogleLogin";
@@ -9,8 +9,9 @@ const Login = () => {
     
     const {signIn}=useAuth()
     const navigate= useNavigate()
+    const location =useLocation();
 
-    // const from = location.state?.from?.pathname || '/'
+   
     const {
         register,
         handleSubmit,
@@ -25,7 +26,7 @@ const Login = () => {
           const user = result.user;
           console.log(user)
           reset
-          navigate('/')
+          navigate(location?.state? location.state:'/')
         //   from,{replace:true}
         }
     )

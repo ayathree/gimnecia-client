@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import useAxiosPublic from "../hook/useAxiosPublic";
 
@@ -7,6 +7,8 @@ const GoogleLogin = () => {
     const{ googleSignIn}=useAuth()
     const axiosPublic = useAxiosPublic()
     const navigate = useNavigate()
+    const location =useLocation();
+
 
     const handleGoogleSignIn = ()=>{
         googleSignIn()
@@ -19,7 +21,7 @@ const GoogleLogin = () => {
             axiosPublic.post('/users', userInfo)
             .then(res=>{
                 console.log(res.data)
-                navigate('/')
+                navigate(location?.state? location.state:'/')
             })
             
         })

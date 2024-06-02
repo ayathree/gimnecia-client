@@ -6,6 +6,9 @@ import AllClasses from "../pages/classes/AllClasses";
 import Community from "../pages/community/Community";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import TrainerDetails from "../pages/trainerDetails/TrainerDetails";
+import BeATrainer from "../pages/beATrainer/BeATrainer";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
     {
@@ -19,6 +22,16 @@ export const router = createBrowserRouter([
         {
           path:'/allTrainer',
           element:<AllTrainer></AllTrainer>
+        },
+        {
+          path:'/trainerDetails',
+          element:<TrainerDetails></TrainerDetails>
+
+        },
+        {
+          path:'/beATrainer',
+          element:<PrivateRoute><BeATrainer></BeATrainer></PrivateRoute>
+
         },
         {
           path:'/allClasses',

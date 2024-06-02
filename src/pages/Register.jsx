@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import gym from '../assets/gymdesign.webp'
 import { useForm } from "react-hook-form";
 import useAxiosPublic from "../hook/useAxiosPublic";
@@ -9,6 +9,7 @@ const Register = () => {
     const axiosPublic = useAxiosPublic()
     const {createUser,updateUser}=useAuth()
     const navigate= useNavigate()
+    const location =useLocation();
     const {
         register,
         handleSubmit,
@@ -36,7 +37,7 @@ const Register = () => {
             if (res.data.insertedId) {
               console.log('user added at database')
               reset
-              navigate('/')
+              navigate(location?.state? location.state:'/')
               
             }
            })
