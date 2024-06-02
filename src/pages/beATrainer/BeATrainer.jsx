@@ -32,7 +32,7 @@ const BeATrainer = () => {
         const availableTime=form.availableTime.value;
         const skillElements = form.querySelectorAll('input[name="skills[]"]:checked');
         const skills = Array.from(skillElements).map(element => element.value);
-        const email=form.email.value;
+        const email=user?.email;
         const image=user?.photoURL;
         const status='pending';
         const availableDays=form.availableDays.value;

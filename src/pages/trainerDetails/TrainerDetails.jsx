@@ -1,7 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData,  } from "react-router-dom";
+
+
+
 
 
 const TrainerDetails = () => {
+    const details = useLoaderData();
+    console.log(details)
+    
+    
     return (
         <div>
             <h1>trainer details</h1>
