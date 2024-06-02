@@ -1,8 +1,56 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import gym from '../assets/gymdesign.webp'
+import { useForm } from "react-hook-form";
+import useAxiosPublic from "../hook/useAxiosPublic";
+import useAuth from "../hook/useAuth";
 
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic()
+    const {createUser,updateUser}=useAuth()
+    const navigate= useNavigate()
+    const {
+        register,
+        handleSubmit,
+        reset,
+       
+        formState: { errors },
+      } = useForm()
+      const onSubmit = (data) =>{
+        console.log(data)
+        createUser(data.email, data.password)
+        .then(result=>{
+          const loggedUser = result.user;
+          console.log(loggedUser)
+          updateUser(data.name, data.photo)
+          .then(()=>{
+            console.log('updated')
+            const userInfo= {
+              name: data.name,
+              email: data.email,
+              role:'member',
+            }
+            console.log(userInfo)
+            axiosPublic.post('/users', userInfo)
+           .then(res=>{
+            if (res.data.insertedId) {
+              console.log('user added at database')
+              reset
+              navigate('/')
+              
+            }
+           })
+            
+          })
+          .catch(error=>{
+            console.log(error.message)
+          })
+         
+        })
+        .catch(error=>{
+          console.log(error.message)
+        })
+      }
     return (
         <div>
              <div className="flex w-full mt-24 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
@@ -17,20 +65,21 @@ const Register = () => {
             Welcome !
         </p>
 
-        <div className="mt-4">
+       <form onSubmit={handleSubmit(onSubmit)} >
+       <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="LoggingEmailAddress">Name</label>
-            <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" />
+            <input id="LoggingName" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="text" {...register("name")} name="name" required />
         </div>
 
       
 
         <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="LoggingEmailAddress">Email Address</label>
-            <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" />
+            <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" {...register("email")} name="email" required />
         </div>
         <div className="mt-4">
             <label className="block mb-2 text-sm font-medium text-gray-600 dark:text-gray-200" htmlFor="LoggingEmailAddress">Photo URL</label>
-            <input id="LoggingEmailAddress" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="email" />
+            <input id="LoggingPhoto" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="text" {...register("photo")} name="photo" required />
         </div>
 
         <div className="mt-4">
@@ -39,7 +88,10 @@ const Register = () => {
                
             </div>
 
-            <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" />
+            <input id="loggingPassword" className="block w-full px-4 py-2 text-gray-700 bg-white border rounded-lg dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-blue-300" type="password" name="password" {...register("password",{
+             minLength:6, 
+          })} required />
+          {errors.password?.type==="minLength" && <p className="text-red-600">Password must 6 characters</p> }
         </div>
 
         <div className="mt-6">
@@ -48,6 +100,7 @@ const Register = () => {
             </button>
         </div>
 
+       </form>
         <div className="flex items-center justify-between mt-4">
             <span className="w-1/5 border-b dark:border-gray-600 md:w-1/4"></span>
 

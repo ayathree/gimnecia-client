@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import useAuth from '../hook/useAuth';
 
 const Nav = () => {
+    const{user, loggedOut}=useAuth()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+    const handleLogout=()=>{
+        loggedOut()
+    }
 
     return (
         <div>
@@ -39,11 +44,28 @@ const Nav = () => {
                             <Link to={'/allTrainer'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">All Trainer</a></Link>
                             <Link to={'/allClasses'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">All Classes</a></Link>
                             <Link to={'/community'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Community</a></Link>
-                            <Link to={'/login'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Login</a></Link>
+                            {
+                                user ? <>
+                                <button onClick={handleLogout} >Log Out</button>
+                                </>:<>
+                                <Link to={'/login'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Login</a></Link>
+                                </>
+                            }
                         </div>
 
                         <div className="flex justify-center md:block">
-                        <button type="button" className="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
+                            {
+                                user ? <>
+                                 <button type="button" className="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
+                        <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
+                            <img src={user.photoURL} className="object-cover w-full h-full" alt="avatar"/>
+                        </div>
+
+                        <h3 className="mx-2 text-gray-700 dark:text-gray-200 lg:hidden">{user.displayName}</h3>
+                    </button>
+
+                                </>:<>
+                                <button type="button" className="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
                         <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
                             
                             <FaUserAlt className="object-cover w-full h-full text-gray-500" />
@@ -51,6 +73,10 @@ const Nav = () => {
 
                         
                     </button>
+                                
+                                </>
+                            }
+                       
 
                         {/* <button type="button" className="flex items-center focus:outline-none" aria-label="toggle profile dropdown">
                         <div className="w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full">
