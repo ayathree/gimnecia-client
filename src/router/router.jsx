@@ -10,6 +10,7 @@ import TrainerDetails from "../pages/trainerDetails/TrainerDetails";
 import BeATrainer from "../pages/beATrainer/BeATrainer";
 import PrivateRoute from "./PrivateRoute";
 import BookedTrainer from "../pages/bookedTrainer/BookedTrainer";
+import Payment from "../pages/payment/Payment";
 
 export const router = createBrowserRouter([
     {
@@ -34,6 +35,13 @@ export const router = createBrowserRouter([
           path:'/bookedTrainer/:id',
           element:<PrivateRoute><BookedTrainer></BookedTrainer></PrivateRoute>,
           loader:({params})=>fetch(`http://localhost:5000/trainee/${params.id}`)
+
+
+        },
+        {
+          path:'/payment',
+          element:<PrivateRoute> <Payment></Payment></PrivateRoute>,
+          // loader:({params})=>fetch(`http://localhost:5000/booked/${params.id}`)
 
 
         },

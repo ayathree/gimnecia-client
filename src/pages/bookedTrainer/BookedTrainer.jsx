@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 
@@ -152,11 +152,21 @@ const BookedTrainer = () => {
                                         <h1 className="font-semibold">Price: ${price}</h1>
                                     </div>
                                     <div className="mt-8 md:flex md:items-center">
-                                        <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-400 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
-                                            Join Now
+                                       
+                                            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-400 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                            Save
                                         </button>
+                                        
                                     </div>
                                 </form>
+                                <Link to={'/payment'}>
+                                <div className="mt-8 md:flex md:items-center">
+                                       
+                                            <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-400 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+                                            Join Now
+                                        </button>
+                                        
+                                    </div></Link>
                             </div>
                         </div>
                     </div>
