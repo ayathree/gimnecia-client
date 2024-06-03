@@ -9,6 +9,7 @@ import Register from "../pages/Register";
 import TrainerDetails from "../pages/trainerDetails/TrainerDetails";
 import BeATrainer from "../pages/beATrainer/BeATrainer";
 import PrivateRoute from "./PrivateRoute";
+import BookedTrainer from "../pages/bookedTrainer/BookedTrainer";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +28,13 @@ export const router = createBrowserRouter([
           path:'/trainerDetails/:id',
           element:<TrainerDetails></TrainerDetails>,
           loader:({params})=>fetch(`http://localhost:5000/trainers/${params.id}`)
+
+        },
+        {
+          path:'/bookedTrainer/:id',
+          element:<PrivateRoute><BookedTrainer></BookedTrainer></PrivateRoute>,
+          loader:({params})=>fetch(`http://localhost:5000/trainee/${params.id}`)
+
 
         },
         {
