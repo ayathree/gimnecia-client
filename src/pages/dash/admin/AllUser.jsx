@@ -1,16 +1,35 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import Swal from "sweetalert2";
 
 
 const AllUser = () => {
     const axiosSecure=useAxiosSecure()
-    const {data: users=[]}=useQuery({
+    const {data: users=[],refetch}=useQuery({
         queryKey:['users'],
         queryFn:async()=>{
             const res = await axiosSecure.get('/users');
             return res.data;
         }
     })
+    const handleAdmin=user=>{
+        axiosSecure.patch(`/users/admin/${user._id}`)
+        .then(res=>{
+            console.log(res.data)
+            if (res.data.modifiedCount > 0) {
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: `${user.name} is an admin now`,
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+               
+                refetch()
+                
+            }
+        })
+    }
     return (
         <div>
             <h1>all user:{users.length}</h1>
@@ -36,14 +55,18 @@ const AllUser = () => {
            {
             users.map(user=> <tr key={user._id} className="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
             <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Apple MacBook Pro 17
+                {user.name}
             </th>
             <td className="px-6 py-4">
-                Silver
+                {user.email}
             </td>
            
             <td className="px-6 py-4">
-                <a href="#" className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                {
+                    user.role ==='admin'? 'Admin': <button onClick={()=>handleAdmin(user)} className="font-medium text-blue-600 dark:text-blue-500 hover:underline">MakeAdmin</button>
+                
+                }
+                
             </td>
         </tr>)
            }
