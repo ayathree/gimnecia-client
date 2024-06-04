@@ -12,6 +12,8 @@ import PrivateRoute from "./PrivateRoute";
 import BookedTrainer from "../pages/bookedTrainer/BookedTrainer";
 import Payment from "../pages/payment/Payment";
 import PayCard from "../pages/payCard/PayCard";
+import Dashboard from "../pages/Dashboard";
+import Profile from "../pages/dash/member/Profile";
 
 export const router = createBrowserRouter([
     {
@@ -76,4 +78,15 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    // dashboard
+    {
+      path:'dashboard',
+      element:<Dashboard></Dashboard>,
+      children:[
+        {
+          path:'profile',
+          element:<Profile></Profile>
+        }
+      ]
+    }
   ]);

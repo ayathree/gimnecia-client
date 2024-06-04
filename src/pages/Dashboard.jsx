@@ -1,0 +1,85 @@
+import { useState } from "react";
+import { NavLink,  Outlet } from "react-router-dom";
+
+const Dashboard = () => {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen(!isSidebarOpen);
+    };
+
+    return (
+        <div className="flex flex-col lg:flex-row container mx-auto lg:px-12 py-8 px-3">
+            {/* Sidebar */}
+            <div className={`fixed inset-0 z-50 min-h-screen bg-gray-400 dark:bg-gray-50 dark:text-gray-800 lg:static lg:flex lg:w-60 transition-transform duration-300 transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}`}>
+                <div className="flex flex-col h-full p-3 w-60">
+                    <div className="space-y-3">
+                        <div className="flex items-center justify-between">
+                            <h2>Dashboard</h2>
+                            <button className="lg:hidden p-2" onClick={toggleSidebar}>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-800">
+                                    <rect width="352" height="32" x="80" y="96"></rect>
+                                    <rect width="352" height="32" x="80" y="240"></rect>
+                                    <rect width="352" height="32" x="80" y="384"></rect>
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <div className="flex-1">
+                            <ul className="pt-2 pb-4 space-y-1 text-sm">
+                                <li className="rounded-sm">
+                                   <NavLink  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                        
+                                        <span>User Profile</span>
+                                    </a></NavLink>
+                                </li>
+                               
+                                <li className="rounded-sm">
+                                    <NavLink to={'/dashboard/activity'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                       
+                                       <span>Activity Log</span>
+                                   </a></NavLink>
+                                </li>
+                                <li className="rounded-sm">
+                                    <NavLink to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                       
+                                       <span>Recommended Class</span>
+                                   </a></NavLink>
+                                </li>
+                               <hr />
+                               <li className="rounded-sm">
+                                    <NavLink to={'/'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                       
+                                       <span>Home</span>
+                                   </a></NavLink>
+                                </li>
+
+                              
+                               
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Main content */}
+            <div className="flex-1 lg:ml-60">
+                
+                    <button className="lg:hidden p-2" onClick={toggleSidebar}>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current dark:text-gray-800">
+                            <rect width="352" height="32" x="80" y="96"></rect>
+                            <rect width="352" height="32" x="80" y="240"></rect>
+                            <rect width="352" height="32" x="80" y="384"></rect>
+                        </svg>
+                    </button>
+                    
+               
+                <main className="p-4">
+                    <Outlet />
+                </main>
+            </div>
+        </div>
+    );
+};
+
+export default Dashboard;

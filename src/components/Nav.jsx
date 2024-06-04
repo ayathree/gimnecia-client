@@ -45,12 +45,16 @@ const Nav = () => {
                             <Link to={'/allClasses'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">All Classes</a></Link>
                             <Link to={'/community'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Community</a></Link>
                             {
+                                user && <Link to={'/dashboard/profile'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Dashboard</a></Link>
+                            }
+                            {
                                 user ? <>
                                 <button onClick={handleLogout} >Log Out</button>
                                 </>:<>
                                 <Link to={'/login'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Login</a></Link>
                                 </>
                             }
+                           
                         </div>
 
                         <div className="flex justify-center md:block">
