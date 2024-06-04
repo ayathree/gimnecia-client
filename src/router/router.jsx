@@ -14,6 +14,7 @@ import Payment from "../pages/payment/Payment";
 import PayCard from "../pages/payCard/PayCard";
 import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/dash/member/Profile";
+import AllUser from "../pages/dash/admin/AllUser";
 
 export const router = createBrowserRouter([
     {
@@ -85,7 +86,14 @@ export const router = createBrowserRouter([
       children:[
         {
           path:'profile',
-          element:<Profile></Profile>
+          element:<PrivateRoute><Profile></Profile></PrivateRoute>
+        },
+
+
+        // admin
+        {
+          path:'allUsers',
+          element:<AllUser></AllUser>
         }
       ]
     }

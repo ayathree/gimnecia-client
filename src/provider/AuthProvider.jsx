@@ -7,6 +7,7 @@ export const AuthContext = createContext(null)
 const AuthProvider = ({children}) => {
     const[user, setUser]= useState(null)
     const[loading,setLoading]=useState(true)
+    const[reload, setReload ]=useState(false)
     const googleProvider = new GoogleAuthProvider()
     // const axiosPublic = useAxiosPublic()
 
@@ -65,9 +66,9 @@ const AuthProvider = ({children}) => {
         return ()=>{
             return unsubscribe();
         }
-    },[])
+    },[reload])
     // axiosPublic
-    const authInfo= {user, loading, createUser, signIn, loggedOut,updateUser,  googleSignIn}
+    const authInfo= {user, loading, createUser, signIn, loggedOut,updateUser, setReload,  googleSignIn}
     return (
        <AuthContext.Provider value={authInfo}>
         {
