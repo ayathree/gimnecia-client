@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink,  Outlet } from "react-router-dom";
+import useAdmin from "../hook/useAdmin";
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -8,7 +9,7 @@ const Dashboard = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
     const isTrainer = true;
 
 
