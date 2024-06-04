@@ -11,6 +11,7 @@ import BeATrainer from "../pages/beATrainer/BeATrainer";
 import PrivateRoute from "./PrivateRoute";
 import BookedTrainer from "../pages/bookedTrainer/BookedTrainer";
 import Payment from "../pages/payment/Payment";
+import PayCard from "../pages/payCard/PayCard";
 
 export const router = createBrowserRouter([
     {
@@ -39,9 +40,16 @@ export const router = createBrowserRouter([
 
         },
         {
-          path:'/payment',
+          path:'/payment/:id',
           element:<PrivateRoute> <Payment></Payment></PrivateRoute>,
-          // loader:({params})=>fetch(`http://localhost:5000/booked/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/booked/${params.id}`)
+
+
+        },
+        {
+          path:'/payCard/:id',
+          element:<PrivateRoute><PayCard></PayCard></PrivateRoute>,
+          loader:({params})=>fetch(`http://localhost:5000/bookeee/${params.id}`)
 
 
         },

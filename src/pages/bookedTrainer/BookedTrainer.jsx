@@ -1,9 +1,11 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import useAxiosPublic from "../../hook/useAxiosPublic";
+import useAuth from "../../hook/useAuth";
 
 const BookedTrainer = () => {
     const axiosPublic = useAxiosPublic()
+    const {user}=useAuth()
     const time = useLoaderData();
     const [price, setPrice] = useState(0);
 
@@ -11,7 +13,9 @@ const BookedTrainer = () => {
         e.preventDefault();
         const form = e.target;
         const name = time?.name;
+        const userEmail = user?.email;
         const slot = time?.availableTime;
+        const slotId = time?._id;
         const slotTwo = time?.availableDays;
         const packageType = form.package.value;
         const classes = form.class.value;
@@ -33,7 +37,7 @@ const BookedTrainer = () => {
                 break;
         }
 
-        const bookedInfo = { name, slot, slotTwo, price, package: packageType, classes };
+        const bookedInfo = { name, slot, slotTwo, price, package: packageType, slotId, userEmail, classes };
         console.log(bookedInfo);
 
         axiosPublic.post('/booked', bookedInfo)
@@ -159,7 +163,7 @@ const BookedTrainer = () => {
                                         
                                     </div>
                                 </form>
-                                <Link to={'/payment'}>
+                                <Link to={`/payment/${user.email}`}>
                                 <div className="mt-8 md:flex md:items-center">
                                        
                                             <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-gray-400 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
