@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink,  Outlet } from "react-router-dom";
 import useAdmin from "../hook/useAdmin";
+import useTrainer from "../hook/useTrainer";
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -10,7 +11,7 @@ const Dashboard = () => {
     };
 
     const [isAdmin] = useAdmin();
-    const isTrainer = true;
+    const [isTrainer] = useTrainer();
 
 
     return (
@@ -33,6 +34,7 @@ const Dashboard = () => {
                         <div className="flex-1">
                             <ul className="pt-2 pb-4 space-y-1 text-sm">
                                 {/* conditional */}
+                                
                                 
                                 {
                                     isAdmin ?
@@ -98,66 +100,50 @@ const Dashboard = () => {
                                 }
                                 {
                                     isTrainer  
-                                    // ?
-                                //     <>
-                                //      <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/allUsers'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    ?
+                                    <>
+                                     <li className="rounded-sm">
+                                     <NavLink to={'/dashboard/manageSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
-                                //         <span>All User</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //      <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/allNewsSub'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                        <span>Manage Slot</span>
+                                    </a></NavLink>
+                                 </li>
+                                     <li className="rounded-sm">
+                                     <NavLink to={'/dashboard/addNewSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
-                                //         <span>All NewsLetter Subscriber</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //  <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/allTrainer'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                        <span>Add New Slot</span>
+                                    </a></NavLink>
+                                 </li>
+                                 <li className="rounded-sm">
+                                     <NavLink to={'/dashboard/addNewForum'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
-                                //         <span>All Trainer</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //  <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/appliedTrainer'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                //         <span>Applied Trainer</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //  <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/balance'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                //         <span>Balance</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //  <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/addNewClass'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                //         <span>Add New Class</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //     </> : <>
-                                //     <li className="rounded-sm">
-                                //     <NavLink  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                         
-                                //          <span>User Profile</span>
-                                //      </a></NavLink>
-                                //  </li>
+                                        <span>Add New Forum</span>
+                                    </a></NavLink>
+                                 </li>
                                 
-                                //  <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/activity'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                 
+                                    </> : <>
+                                    <li className="rounded-sm">
+                                    <NavLink  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                         
+                                         <span>User Profile</span>
+                                     </a></NavLink>
+                                 </li>
+                                
+                                 <li className="rounded-sm">
+                                     <NavLink to={'/dashboard/activity'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
-                                //         <span>Activity Log</span>
-                                //     </a></NavLink>
-                                //  </li>
-                                //  <li className="rounded-sm">
-                                //      <NavLink to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                        <span>Activity Log</span>
+                                    </a></NavLink>
+                                 </li>
+                                 <li className="rounded-sm">
+                                     <NavLink to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
-                                //         <span>Recommended Class</span>
-                                //     </a></NavLink>
-                                //  </li>
+                                        <span>Recommended Class</span>
+                                    </a></NavLink>
+                                 </li>
                                     
-                                //     </>
+                                    </>
                                 }
                                 {/* shared */}
                                <hr />
