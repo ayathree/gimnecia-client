@@ -16,6 +16,8 @@ import Dashboard from "../pages/Dashboard";
 import Profile from "../pages/dash/member/Profile";
 import AllUser from "../pages/dash/admin/AllUser";
 import AdminRoute from "./AdminRoute";
+import ApplyTrainers from "../pages/dash/admin/ApplyTrainers";
+import ApplicantDetails from "../pages/dash/admin/ApplicantDetails";
 
 export const router = createBrowserRouter([
     {
@@ -95,6 +97,15 @@ export const router = createBrowserRouter([
         {
           path:'allUsers',
           element:<AdminRoute><AllUser></AllUser></AdminRoute>
+        },
+        {
+          path:'appliedTrainer',
+          element:<AdminRoute><ApplyTrainers></ApplyTrainers> </AdminRoute>
+        },
+        {
+          path:'applicantDetails',
+          element:<AdminRoute> <ApplicantDetails></ApplicantDetails> </AdminRoute>
+
         }
       ]
     }
