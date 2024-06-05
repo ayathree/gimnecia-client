@@ -18,6 +18,7 @@ import AllUser from "../pages/dash/admin/AllUser";
 import AdminRoute from "./AdminRoute";
 import ApplyTrainers from "../pages/dash/admin/ApplyTrainers";
 import ApplicantDetails from "../pages/dash/admin/ApplicantDetails";
+import FinalTrainers from "../pages/dash/admin/FinalTrainers";
 
 export const router = createBrowserRouter([
     {
@@ -108,6 +109,10 @@ export const router = createBrowserRouter([
           loader:({params})=>fetch(`http://localhost:5000/trainers/${params.id}`)
 
 
+        },
+        {
+          path:'allTrainerConfirmed',
+          element:<AdminRoute><FinalTrainers></FinalTrainers></AdminRoute>
         }
       ]
     }

@@ -7,7 +7,7 @@ const useTrainers = () => {
 const {data: trainer=[], isPending:loading, refetch}=useQuery({
     queryKey:['trainer'],
     queryFn: async()=>{
-        const res= await axiosPublic.get('/trainers')
+        const res= await axiosPublic.get('/confirmedTrainer')
         return res.data
     }
 })
