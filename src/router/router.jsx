@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         {
           path:'/trainerDetails/:id',
           element:<TrainerDetails></TrainerDetails>,
-          loader:({params})=>fetch(`http://localhost:5000/trainers/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/confirmedTrainer/${params.id}`)
 
         },
         {

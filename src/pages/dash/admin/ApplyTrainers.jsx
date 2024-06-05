@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const ApplyTrainers = () => {
     const axiosSecure=useAxiosSecure()
-    const {data: trainers=[],refetch}=useQuery({
+    const {data: trainers=[],}=useQuery({
         queryKey:['trainers'],
         queryFn:async()=>{
             const res = await axiosSecure.get('/trainers');

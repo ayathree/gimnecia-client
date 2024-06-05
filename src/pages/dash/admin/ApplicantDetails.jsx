@@ -11,17 +11,11 @@ const ApplicantDetails = () => {
     const navigate=useNavigate()
     const axiosSecure=useAxiosSecure()
     const handleTrainer=user=>{
-        axiosSecure.get(`/trainers/${user._id}`)
+        axiosSecure.patch(`/trainers/confirm/${user._id}`)
         .then(res=>{
             console.log(res.data)
             if (res.data.modifiedCount > 0) {
-                // Swal.fire({
-                //     position: "top-end",
-                //     icon: "success",
-                //     title: `${user.name} is a trainer from now`,
-                //     showConfirmButton: false,
-                //     timer: 1500
-                //   });
+                
                
                 // refetch()
                 navigate('/dashboard/allTrainerConfirmed')
