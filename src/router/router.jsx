@@ -103,8 +103,10 @@ export const router = createBrowserRouter([
           element:<AdminRoute><ApplyTrainers></ApplyTrainers> </AdminRoute>
         },
         {
-          path:'applicantDetails',
-          element:<AdminRoute> <ApplicantDetails></ApplicantDetails> </AdminRoute>
+          path:'applicantDetails/:id',
+          element:<AdminRoute> <ApplicantDetails></ApplicantDetails> </AdminRoute>,
+          loader:({params})=>fetch(`http://localhost:5000/trainers/${params.id}`)
+
 
         }
       ]

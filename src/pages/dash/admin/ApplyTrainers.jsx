@@ -50,7 +50,7 @@ const ApplyTrainers = () => {
                 {trainer.email}
             </td>
             <td className="px-6 py-4">
-                <Link to={'/dashboard/applicantDetails'}> <button className="text-blue-600 font-semibold">Detail</button></Link>
+                <Link to={`/dashboard/applicantDetails/${trainer._id}`}> <button className="text-blue-600 font-semibold">Detail</button></Link>
                
             </td>
             
