@@ -19,6 +19,10 @@ import AdminRoute from "./AdminRoute";
 import ApplyTrainers from "../pages/dash/admin/ApplyTrainers";
 import ApplicantDetails from "../pages/dash/admin/ApplicantDetails";
 import FinalTrainers from "../pages/dash/admin/FinalTrainers";
+import TrainerRouter from "./TrainerRouter";
+import ManageSlot from "../pages/dash/trainer/ManageSlot";
+import AddNewSlot from "../pages/dash/trainer/AddNewSlot";
+import AddNewForum from "../pages/dash/trainer/AddNewForum";
 
 export const router = createBrowserRouter([
     {
@@ -113,6 +117,19 @@ export const router = createBrowserRouter([
         {
           path:'allTrainerConfirmed',
           element:<AdminRoute><FinalTrainers></FinalTrainers></AdminRoute>
+        },
+        // trainer
+        {
+          path:'manageSlot',
+          element:<TrainerRouter><ManageSlot></ManageSlot></TrainerRouter>
+        },
+        {
+          path:'addNewSlot',
+          element:<TrainerRouter><AddNewSlot></AddNewSlot></TrainerRouter>
+        },
+        {
+          path:'addNewForum',
+          element:<TrainerRouter><AddNewForum></AddNewForum></TrainerRouter>
         }
       ]
     }
