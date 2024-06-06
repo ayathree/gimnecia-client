@@ -129,7 +129,7 @@ const BookedTrainer = () => {
                             <div className="lg:w-1/2">
                                 <h1 className="mt-4 text-gray-600 dark:text-gray-300 md:text-lg">Book the Trainer</h1>
                                 <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">{time.name}</h1>
-                                <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.availableTime}</h1>
+                                <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.timeslot.times[0]}</h1>
                             </div>
                             <div className="mt-8 lg:w-1/2 lg:mt-0">
                                 <form onSubmit={handleJoin} className="w-full lg:max-w-xl">

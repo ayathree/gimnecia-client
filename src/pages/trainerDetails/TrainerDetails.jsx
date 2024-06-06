@@ -37,7 +37,9 @@ const TrainerDetails = () => {
 			</p>
 			<form noValidate="" action="" className="self-stretch space-y-3">
 				
-				<Link to={`/bookedTrainer/${details.availableTime}`}><button type="button" className="w-full py-2 font-semibold bg-gray-500 rounded text-white dark:bg-violet-600 dark:text-gray-50">{details.availableTime} {details.availableDays}</button></Link>
+				{
+                    details.timeslot.times.map(time=><Link key={time.id} to={`/bookedTrainer/${time}`}><button type="button"  className="w-full mb-5 py-2 font-semibold bg-gray-500 rounded text-white dark:bg-violet-600 dark:text-gray-50">{time} {details.timeslot.days.map(day=> <p key={day.id}>{day}</p>)} </button></Link>)
+                }
 			</form>
 		</div>
 		<div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16  dark:bg-gray-50 xl:col-span-2 ">
