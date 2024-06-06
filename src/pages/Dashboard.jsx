@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink,  Outlet } from "react-router-dom";
 import useAdmin from "../hook/useAdmin";
 import useTrainer from "../hook/useTrainer";
+import useMember from "../hook/useMember";
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -12,6 +13,7 @@ const Dashboard = () => {
 
     const [isAdmin] = useAdmin();
     const [isTrainer] = useTrainer();
+    const[isMember]= useMember();
 
 
     return (
@@ -37,7 +39,7 @@ const Dashboard = () => {
                                 
                                 
                                 {
-                                    isAdmin ?
+                                    isAdmin &&
                                    <>
                                     <li className="rounded-sm">
                                     <NavLink to={'/dashboard/allUsers'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
@@ -75,32 +77,10 @@ const Dashboard = () => {
                                        <span>Add New Class</span>
                                    </a></NavLink>
                                 </li>
-                                   </> : <>
-                                   <li className="rounded-sm">
-                                   <NavLink  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>User Profile</span>
-                                    </a></NavLink>
-                                </li>
-                               
-                                <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/activity'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                       
-                                       <span>Activity Log</span>
-                                   </a></NavLink>
-                                </li>
-                                <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                       
-                                       <span>Recommended Class</span>
-                                   </a></NavLink>
-                                </li>
-                                   
-                                   </>
+                                   </> 
                                 }
                                 {
-                                    isTrainer  
-                                    ?
+                                    isTrainer  &&
                                     <>
                                      <li className="rounded-sm">
                                      <NavLink to={'/dashboard/manageSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
@@ -122,7 +102,14 @@ const Dashboard = () => {
                                  </li>
                                 
                                  
-                                    </> : <>
+                                    </> 
+                                    
+                                    
+                                    
+                                }
+                                {
+                                    isMember && 
+                                    <>
                                     <li className="rounded-sm">
                                     <NavLink  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                          
@@ -142,7 +129,6 @@ const Dashboard = () => {
                                         <span>Recommended Class</span>
                                     </a></NavLink>
                                  </li>
-                                    
                                     </>
                                 }
                                 {/* shared */}
