@@ -3,6 +3,8 @@ import img1 from '../../assets/yoga.jpg'
 import img2 from '../../assets/zumba.jpg'
 import img3 from '../../assets/facilities.webp'
 import img4 from '../../assets/Thetrainer.jpg'
+import HomeNews from '../../components/HomeNews';
+
 const Home = () => {
     return (
         <div>
@@ -86,6 +88,10 @@ const Home = () => {
     </div>
 </section>
 
+</div>
+{/* newsLetter */}
+<div className='mt-24'>
+    <HomeNews></HomeNews>
 </div>
 
 

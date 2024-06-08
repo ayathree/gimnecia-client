@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import useTrainers from "../../hook/useTrainers";
 import { IoShareSocialSharp } from "react-icons/io5";
+import useMember from "../../hook/useMember";
 
 
 const AllTrainer = () => {
     const[trainer]=useTrainers()
+    const [isMember] = useMember()
     return (
         <div className="mt-24">
             <h1>All trainer:{trainer.length}</h1>
@@ -21,9 +23,11 @@ const AllTrainer = () => {
 
                             <a className="text-center"
                             href={item.socialIcon}><IoShareSocialSharp />  </a> 
-                            <span className="text-sm "> <span className="font-semibold">Available Slot</span> :{item.availableTime} {item.availableDays}</span>
+                            <span className="text-sm "> <span className="font-semibold">Available Slot</span> :{item.slotName} {item.slotTime}</span>
                             <div className=" mt-4 md:mt-6">
-                               <Link to={`/trainerDetails/${item._id}`}> <button  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Know more</button></Link>
+                               {
+                                isMember && <Link to={`/trainerDetails/${item._id}`}> <button  className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gray-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Know more</button></Link>
+                               }
                                 
                             </div>
                         </div>
