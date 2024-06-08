@@ -19,6 +19,7 @@ const BookedTrainer = () => {
         const slotName = time?.slotName;
         const packageType = form.package.value;
         const classes = form.class.value;
+        const statusBook ='none'
 
         // Determine the price based on the selected package
         let price;
@@ -37,7 +38,7 @@ const BookedTrainer = () => {
                 break;
         }
 
-        const bookedInfo = { name, slotTime, slotName, price, package: packageType, slotId, userEmail, classes };
+        const bookedInfo = { name, slotTime,statusBook, slotName, price, package: packageType, slotId, userEmail, classes };
         console.log(bookedInfo);
 
         axiosPublic.post('/booked', bookedInfo)
@@ -137,10 +138,13 @@ const BookedTrainer = () => {
                                     <div className="relative flex items-center mb-4">
                                         <select name="class" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required>
                                             <option value=""></option>
-                                            <option value="yoga">Yoga</option>
+                                            {
+                                                time.classT.map(item=><option key={item.id} value={item}>{item}</option>)
+                                            }
+                                            {/* <option value="yoga">Yoga</option>
                                             <option value="pilates">Pilates</option>
                                             <option value="zumba">Zumba</option>
-                                            <option value="boxing">Boxing</option>
+                                            <option value="boxing">Boxing</option> */}
                                         </select>
                                     </div>
                                     <h1 className="font-semibold">Select Package :</h1>

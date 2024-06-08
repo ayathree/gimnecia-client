@@ -23,6 +23,7 @@ import TrainerRouter from "./TrainerRouter";
 import ManageSlot from "../pages/dash/trainer/ManageSlot";
 import AddNewSlot from "../pages/dash/trainer/AddNewSlot";
 import AddNewForum from "../pages/dash/trainer/AddNewForum";
+import Balance from "../pages/dash/admin/Balance";
 
 export const router = createBrowserRouter([
     {
@@ -118,6 +119,11 @@ export const router = createBrowserRouter([
           path:'allTrainerConfirmed',
           element:<AdminRoute><FinalTrainers></FinalTrainers></AdminRoute>
         },
+        {
+          path:'balance',
+          element:<AdminRoute><Balance></Balance></AdminRoute>
+        },
+
         // trainer
         {
           path:'manageSlot',

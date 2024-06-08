@@ -49,7 +49,14 @@ const Payment = () => {
                             ${pay.price}
                         </td>
                         <td className="px-6 py-4">
-                            <Link to={`/payCard/${pay._id}`}><button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Pay</button></Link>
+                            {
+                                pay.statusBook ==="Booked" ?<>
+                                <p className="text-green-500">Booked</p>
+                                </>:<>
+                                <Link to={`/payCard/${pay._id}`}><button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Pay</button></Link>
+                                </>
+                            }
+                            {/* <Link to={`/payCard/${pay._id}`}><button className="font-medium text-blue-600 dark:text-blue-500 hover:underline">Pay</button></Link> */}
                         </td>
                     </tr>
                   

@@ -31,8 +31,15 @@ const BeATrainer = () => {
     { value: 'night', label: 'night' },
   ];
 
+  const optionsFour = [
+    { value: 'yoga', label: 'yoga' },
+    { value: 'pilates', label: 'pilates' },
+    { value: 'zumba', label: 'zumba' },
+    { value: 'boxing', label: 'boxing' },
+  ];
+
   const [availableDays, setAvailableDays] = useState([]);
-  // const [availableTimes, setAvailableTimes] = useState([]);
+  const [classes, setClasses] = useState([]);
 
   const handleApply = (e) => {
     e.preventDefault();
@@ -51,6 +58,8 @@ const BeATrainer = () => {
 
     // Combine availableDays and availableTimes into timeslot
     const days = availableDays.map(day => day.value);
+    const classT = classes.map(item => item.value);
+
       
     
 
@@ -65,7 +74,8 @@ const BeATrainer = () => {
       image,
       days,
       slotName,
-      slotTime
+      slotTime,
+      classT
     };
 
     console.log(applyTrainer);
@@ -82,6 +92,7 @@ const BeATrainer = () => {
           });
           form.reset();
           setAvailableDays([]);
+          setClasses([])
          
         }
       })
@@ -131,6 +142,10 @@ const BeATrainer = () => {
               <div>
                 <label htmlFor="availableTime" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slot Name</label>
                 <Select name='slotName'  options={optionsThree} ></Select>
+              </div>
+              <div>
+                <label htmlFor="availableTime" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Class</label>
+                <Select name='classT' isMulti  options={optionsFour} onChange={setClasses} ></Select>
               </div>
             </div>
 

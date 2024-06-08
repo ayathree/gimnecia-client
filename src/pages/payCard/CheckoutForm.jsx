@@ -2,6 +2,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import useAuth from "../../hook/useAuth";
+import Swal from "sweetalert2";
 
 
 const CheckoutForm = ({payDetails}) => {
@@ -84,6 +85,7 @@ const CheckoutForm = ({payDetails}) => {
                     slotTime : payDetails.slotTime,
                     slotName: payDetails.slotName,
                     slotId : payDetails.slotId,
+                    statusBook : payDetails.statusBook,
                     
                      classes:payDetails.classes,
                     status: 'pending'
@@ -94,8 +96,14 @@ const CheckoutForm = ({payDetails}) => {
                 
                
                 if (res.data?.paymentResult?.insertedId) {
-                    alert('Thank you for payment')
-                    // navigate('/dashboard/paymentHistory')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Thank you for the payment",
+                        showConfirmButton: false,
+                        timer: 1500
+                      });
+                    
                     
                 }
             }
