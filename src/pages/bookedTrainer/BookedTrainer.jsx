@@ -14,9 +14,9 @@ const BookedTrainer = () => {
         const form = e.target;
         const name = time?.name;
         const userEmail = user?.email;
-        const slot = time?.availableTime;
+        const slotTime = time?.slotTime;
         const slotId = time?._id;
-        const slotTwo = time?.availableDays;
+        const slotName = time?.slotName;
         const packageType = form.package.value;
         const classes = form.class.value;
 
@@ -37,7 +37,7 @@ const BookedTrainer = () => {
                 break;
         }
 
-        const bookedInfo = { name, slot, slotTwo, price, package: packageType, slotId, userEmail, classes };
+        const bookedInfo = { name, slotTime, slotName, price, package: packageType, slotId, userEmail, classes };
         console.log(bookedInfo);
 
         axiosPublic.post('/booked', bookedInfo)
@@ -129,7 +129,7 @@ const BookedTrainer = () => {
                             <div className="lg:w-1/2">
                                 <h1 className="mt-4 text-gray-600 dark:text-gray-300 md:text-lg">Book the Trainer</h1>
                                 <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">{time.name}</h1>
-                                <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.timeslot.times[0]}</h1>
+                                <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.slotTime}</h1>
                             </div>
                             <div className="mt-8 lg:w-1/2 lg:mt-0">
                                 <form onSubmit={handleJoin} className="w-full lg:max-w-xl">

@@ -25,8 +25,14 @@ const BeATrainer = () => {
     { value: '7.30-9.30 PM', label: '7.30-9.30 PM' },
   ];
 
+  const optionsThree = [
+    { value: 'morning', label: 'morning' },
+    { value: 'evening', label: 'evening' },
+    { value: 'night', label: 'night' },
+  ];
+
   const [availableDays, setAvailableDays] = useState([]);
-  const [availableTimes, setAvailableTimes] = useState([]);
+  // const [availableTimes, setAvailableTimes] = useState([]);
 
   const handleApply = (e) => {
     e.preventDefault();
@@ -40,12 +46,13 @@ const BeATrainer = () => {
     const email = user?.email;
     const image = user?.photoURL;
     const status = 'pending';
+    const slotTime = form.availableTime.value;
+    const slotName = form.slotName.value;
 
     // Combine availableDays and availableTimes into timeslot
-    const timeslot = {
-      days: availableDays.map(day => day.value),
-      times: availableTimes.map(time => time.value)
-    };
+    const days = availableDays.map(day => day.value);
+      
+    
 
     const applyTrainer = {
       name,
@@ -56,7 +63,9 @@ const BeATrainer = () => {
       status,
       email,
       image,
-      timeslot
+      days,
+      slotName,
+      slotTime
     };
 
     console.log(applyTrainer);
@@ -73,7 +82,7 @@ const BeATrainer = () => {
           });
           form.reset();
           setAvailableDays([]);
-          setAvailableTimes([]);
+         
         }
       })
       .catch(error => {
@@ -116,8 +125,12 @@ const BeATrainer = () => {
                 <input type="text" name='experience' id="experience" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required />
               </div>
               <div>
-                <label htmlFor="availableTime" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Available Time in a Day</label>
-                <Select name='availableTime' isMulti options={optionsTwo} onChange={setAvailableTimes}></Select>
+                <label htmlFor="availableTime" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Available time in day</label>
+                <Select name='availableTime'  options={optionsTwo} ></Select>
+              </div>
+              <div>
+                <label htmlFor="availableTime" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slot Name</label>
+                <Select name='slotName'  options={optionsThree} ></Select>
               </div>
             </div>
 
