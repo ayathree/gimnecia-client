@@ -25,6 +25,7 @@ import AddNewSlot from "../pages/dash/trainer/AddNewSlot";
 import AddNewForum from "../pages/dash/trainer/AddNewForum";
 import Balance from "../pages/dash/admin/Balance";
 import AllNewLetter from "../pages/dash/allNewsLetter/AllNewLetter";
+import BookedDetails from "../pages/dash/trainer/BookedDetails";
 
 export const router = createBrowserRouter([
     {
@@ -136,11 +137,19 @@ export const router = createBrowserRouter([
         },
         {
           path:'addNewSlot',
-          element:<TrainerRouter><AddNewSlot></AddNewSlot></TrainerRouter>
+          element:<TrainerRouter><AddNewSlot></AddNewSlot></TrainerRouter>,
+          
+          
         },
         {
           path:'addNewForum',
           element:<TrainerRouter><AddNewForum></AddNewForum></TrainerRouter>
+        },
+        {
+          path:'bookeDetails/:id',
+          element:<TrainerRouter><BookedDetails></BookedDetails></TrainerRouter>,
+          loader:({params})=>fetch(`http://localhost:5000/bookeee/${params.id}`)
+          
         }
       ]
     }
