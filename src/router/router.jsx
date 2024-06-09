@@ -56,7 +56,7 @@ export const router = createBrowserRouter([
         {
           path:'/payment/:id',
           element:<PrivateRoute> <Payment></Payment></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/booked/${params.id}`)
+          loader:({params})=>fetch(`http://localhost:5000/bookedUser/${params.id}`)
 
 
         },

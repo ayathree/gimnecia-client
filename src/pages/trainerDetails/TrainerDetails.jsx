@@ -38,7 +38,10 @@ const TrainerDetails = () => {
 			<form noValidate="" action="" className="self-stretch space-y-3">
 				
 				{
-                    details.days.map(day=><Link key={day.id} to={`/bookedTrainer/${details.email}`}><button type="button"  className="w-full mb-5 py-2 font-semibold bg-gray-500 rounded text-white dark:bg-violet-600 dark:text-gray-50">{day} {details.slotTime} </button></Link>)
+                    details?.days?.map(day=><Link key={day.id} to={`/bookedTrainer/${details?.email}`}><button type="button"  className="w-full mb-5 py-2 font-semibold bg-gray-500 rounded text-white dark:bg-violet-600 dark:text-gray-50">{day} {details?.slotTime} </button></Link>)
+                }
+                {
+                    details?.newdays?.map(day=><Link key={day.id} to={`/bookedTrainer/${details?.email}`}><button type="button"  className="w-full mb-5 py-2 font-semibold bg-gray-500 rounded text-white dark:bg-violet-600 dark:text-gray-50">{day} {details?.newslotTime} </button></Link>)
                 }
 			</form>
 		</div>
@@ -48,7 +51,13 @@ const TrainerDetails = () => {
         <div className="w-full mt-10">
         <h1 className="text-xl font-semibold">Trainer Name : {details.name}</h1>
         <h1 className="text-xl font-semibold">Age : {details.age}</h1>
-        <h1 className="text-xl font-semibold">Slot Name : {details.slotName}</h1>
+        
+        {
+            details?.slotName && <h1 className="text-xl font-semibold">Slot Name : {details?.slotName}</h1>
+        }
+        {
+           details?.newslotName && <h1 className="text-xl font-semibold">Slot Name : {details?.newslotName}</h1> 
+        }
         <h1 className="text-xl font-semibold">Expertise : </h1>
         <div>
             <p>{details.skills?.[0]}</p>

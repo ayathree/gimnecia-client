@@ -16,8 +16,10 @@ const BookedTrainer = () => {
         const name = time?.name;
         const userEmail = user?.email;
         const slotTime = time?.slotTime;
+        const newslotTime=time?.newslotTime;
         const slotId = time?._id;
         const slotName = time?.slotName;
+        const newslotName = time?.newslotName;
         const packageType = form.package.value;
         const classes = form.class.value;
         const statusBook ='none'
@@ -39,7 +41,7 @@ const BookedTrainer = () => {
                 break;
         }
 
-        const bookedInfo = { name, slotTime,statusBook, slotName, price, package: packageType, slotId, userEmail, classes };
+        const bookedInfo = { name, slotTime,statusBook,newslotName,newslotTime, slotName, price, package: packageType, slotId, userEmail, classes };
         console.log(bookedInfo);
 
         axiosPublic.post('/booked', bookedInfo)
@@ -131,7 +133,12 @@ const BookedTrainer = () => {
                             <div className="lg:w-1/2">
                                 <h1 className="mt-4 text-gray-600 dark:text-gray-300 md:text-lg">Book the Trainer</h1>
                                 <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">{time.name}</h1>
-                                <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.slotTime}</h1>
+                                {
+                                    time?.slotTime && <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.slotTime}</h1>
+                                }
+                                 {
+                                    time?.newslotTime && <h1 className="mt-4 text-2xl font-medium text-gray-800 capitalize lg:text-3xl dark:text-white">Time Slot : {time.newslotTime}</h1>
+                                }
                             </div>
                             <div className="mt-8 lg:w-1/2 lg:mt-0">
                                 <form onSubmit={handleJoin} className="w-full lg:max-w-xl">
