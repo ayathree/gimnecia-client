@@ -2,10 +2,17 @@ import { useState } from 'react';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useAuth from '../hook/useAuth';
+import useMember from '../hook/useMember';
+import useAdmin from '../hook/useAdmin';
+import useTrainer from '../hook/useTrainer';
 
 const Nav = () => {
     const{user, loggedOut}=useAuth()
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const [isMember] = useMember()
+    const [isAdmin] = useAdmin()
+    const [isTrainer] = useTrainer()
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -45,7 +52,13 @@ const Nav = () => {
                             <Link to={'/allClasses'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">All Classes</a></Link>
                             <Link to={'/community'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Community</a></Link>
                             {
-                                user && <Link to={'/dashboard/profile'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Dashboard</a></Link>
+                                user && isMember && <Link to={'/dashboard/profile'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Dashboard</a></Link>
+                            }
+                            {
+                                user && isAdmin && <Link to={'/dashboard/allUsers'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Dashboard</a></Link>
+                            }
+                             {
+                                user && isTrainer && <Link to={'/dashboard/manageSlot'}><a className="my-2 text-gray-700 transition-colors duration-300 transform dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400 md:mx-4 md:my-0" href="#">Dashboard</a></Link>
                             }
                             {
                                 user ? <>
