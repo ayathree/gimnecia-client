@@ -8,6 +8,7 @@ const BookedTrainer = () => {
     const {user}=useAuth()
     const time = useLoaderData();
     const [price, setPrice] = useState(0);
+    console.log(time)
 
     const handleJoin = e => {
         e.preventDefault();
@@ -139,7 +140,7 @@ const BookedTrainer = () => {
                                         <select name="class" className="block w-full px-10 py-3 text-gray-700 bg-white border rounded-lg dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" required>
                                             <option value=""></option>
                                             {
-                                                time.classT.map(item=><option key={item.id} value={item}>{item}</option>)
+                                                time.classT?.map(item=><option key={item.id} value={item}>{item}</option>)
                                             }
                                             {/* <option value="yoga">Yoga</option>
                                             <option value="pilates">Pilates</option>
