@@ -16,6 +16,7 @@ const BookedTrainer = () => {
         const name = time?.name;
         const userEmail = user?.email;
         const slotTime = time?.slotTime;
+        
         const newslotTime=time?.newslotTime;
         const slotId = time?._id;
         const slotName = time?.slotName;

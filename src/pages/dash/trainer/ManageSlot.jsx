@@ -17,39 +17,32 @@ const ManageSlot = () => {
         },
         enabled: !!user?.displayName  
     });
-    
-    const handleDelete=book=>{
-        axiosSecure.delete(`/bookeee/${book._id}`)
-        .then(res=>{
-            Swal.fire({
+
+    const handleDelete = (book) => {
+        Swal.fire({
             title: "Are you sure?",
-            text: "Are you want to delete this?",
+            text: "Do you want to delete this?",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
             confirmButtonText: "Yes, delete it!"
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
-                if (res.data.deletedCount >0) {
-              Swal.fire({
-                title: "Deleted!",
-                text: "Your file has been deleted.",
-                icon: "success"
-              
+                axiosSecure.delete(`/bookeee/${book._id}`)
+                    .then(res => {
+                        if (res.data.deletedCount > 0) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your file has been deleted.",
+                                icon: "success"
+                            });
+                            refetch();
+                        }
+                    });
             }
-        );
-    }
-    
-            
-                  
-            refetch()
-             
-           }
-        })
-
-    })
-}
+        });
+    };
 
     return (
         <div>
@@ -67,31 +60,33 @@ const ManageSlot = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {
-                                booked.map(book => (
-                                    <tr key={book._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            {book.userEmail}
-                                        </th>
-                                        <td className="px-6 py-4">{book.slotTime}</td>
-                                        <td className="px-6 py-4">{book.slotName}</td>
-                                        <td className="px-6 py-4">
-                                            {book.statusBook === 'Booked' ? (
-                                                <p className="text-green-500">Booked</p>
-                                            ) : (
-                                                <p className="text-red-500">Pending</p>
-                                            )}
-                                        </td>
-                                        <td className="px-6 py-4">
-                                            {book.statusBook === 'Booked' ? (
-                                                <Link to={`/dashboard/bookeDetails/${book._id}`}><button className="text-blue-500">Details</button></Link>
-                                            ) : (
-                                                <button onClick={()=>handleDelete(book)} className="text-blue-500 text-2xl"><MdOutlineDelete/></button>
-                                            )}
-                                        </td>
-                                    </tr>
-                                ))
-                            }
+                            {booked.map(book => (
+                                <tr key={book._id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {book.userEmail}
+                                    </th>
+                                    <td className="px-6 py-4">{book.slotTime}</td>
+                                    <td className="px-6 py-4">{book.slotName}</td>
+                                    <td className="px-6 py-4">
+                                        {book.statusBook === 'Booked' ? (
+                                            <p className="text-green-500">Booked</p>
+                                        ) : (
+                                            <p className="text-red-500">Pending</p>
+                                        )}
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        {book.statusBook === 'Booked' ? (
+                                            <Link to={`/dashboard/bookeDetails/${book._id}`}>
+                                                <button className="text-blue-500">Details</button>
+                                            </Link>
+                                        ) : (
+                                            <button onClick={() => handleDelete(book)} className="text-blue-500 text-2xl">
+                                                <MdOutlineDelete />
+                                            </button>
+                                        )}
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

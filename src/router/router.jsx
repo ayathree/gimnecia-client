@@ -26,11 +26,16 @@ import AddNewForum from "../pages/dash/trainer/AddNewForum";
 import Balance from "../pages/dash/admin/Balance";
 import AllNewLetter from "../pages/dash/allNewsLetter/AllNewLetter";
 import BookedDetails from "../pages/dash/trainer/BookedDetails";
+import ActivityLog from "../pages/dash/member/ActivityLog";
+import MemberBookedTrainer from "../pages/dash/member/MemberBookedTrainer";
+import AddNewClass from "../pages/dash/admin/AddNewClass";
+import Error from "../pages/Error";
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Root></Root>,
+      errorElement:<Error></Error>,
       children:[
         {
           path:'/',
@@ -94,10 +99,21 @@ export const router = createBrowserRouter([
     {
       path:'dashboard',
       element:<Dashboard></Dashboard>,
+      errorElement:<Error></Error>,
       children:[
+        // member
         {
           path:'profile',
           element:<PrivateRoute><Profile></Profile></PrivateRoute>
+        },
+        {
+          path:'activity',
+          element:<PrivateRoute><ActivityLog></ActivityLog></PrivateRoute>
+        },
+        {
+          path:'recommended',
+          element:<PrivateRoute><MemberBookedTrainer></MemberBookedTrainer></PrivateRoute>
+
         },
 
 
@@ -128,6 +144,10 @@ export const router = createBrowserRouter([
         {
           path:'balance',
           element:<AdminRoute><Balance></Balance></AdminRoute>
+        },
+        {
+          path:'addNewClass',
+          element:<AdminRoute><AddNewClass></AddNewClass></AdminRoute>
         },
 
         // trainer

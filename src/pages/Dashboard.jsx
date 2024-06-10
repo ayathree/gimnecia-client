@@ -126,7 +126,7 @@ const Dashboard = () => {
                                  <li className="rounded-sm">
                                      <NavLink to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
-                                        <span>Recommended Class</span>
+                                        <span>Booked trainers</span>
                                     </a></NavLink>
                                  </li>
                                     </>
