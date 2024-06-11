@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 
 
@@ -6,7 +7,9 @@ const BookedDetails = () => {
     console.log(details)
     return (
         <div>
-          
+           <Helmet>
+                <title>GYMNECIA | Booked details</title>
+            </Helmet>
           <div>
             
 

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { Cell, Legend, Pie, PieChart } from "recharts";
+import { Helmet } from "react-helmet-async";
 
 // Define colors for the pie chart slices
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
@@ -45,6 +46,9 @@ const Balance = () => {
 
   return (
     <div>
+       <Helmet>
+                <title>GYMNECIA | Balance</title>
+            </Helmet>
       <h1>Balance: ${stats.revenue || 0}</h1>
       <div className="mt-24">
         <p>Last transaction IDs:</p>

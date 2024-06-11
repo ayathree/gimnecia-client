@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ApplicantDetails = () => {
     const [applicant, setApplicant] = useState(useLoaderData());
@@ -49,7 +50,9 @@ const ApplicantDetails = () => {
 
     return (
         <div>
-            <h1>Applicant: {applicant.name}</h1>
+             <Helmet>
+                <title>GYMNECIA | Applicant details</title>
+            </Helmet>
             <section className="bg-white dark:bg-gray-900">
                 <div className="container px-6 py-10 mx-auto">
                     <div className="lg:-mx-6 lg:flex lg:items-center">

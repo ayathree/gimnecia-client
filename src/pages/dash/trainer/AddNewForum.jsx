@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 // import useUsers from "../../../hook/useUsers";
 import useAuth from "../../../hook/useAuth";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const AddNewForum = () => {
@@ -44,6 +45,9 @@ const {data: userRole=[]}=useQuery({
 
     return (
         <div>
+             <Helmet>
+                <title>GYMNECIA | Add new forum</title>
+            </Helmet>
             <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
     <h2 className="text-lg font-semibold text-gray-700 capitalize dark:text-white">Add Forum</h2>
 

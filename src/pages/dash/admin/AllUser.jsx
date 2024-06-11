@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 
 const AllUser = () => {
@@ -32,7 +33,9 @@ const AllUser = () => {
     }
     return (
         <div>
-            <h1>all user:{users.length}</h1>
+             <Helmet>
+                <title>GYMNECIA | All User</title>
+            </Helmet>
             
 
 <div className="relative overflow-x-auto shadow-md sm:rounded-lg">

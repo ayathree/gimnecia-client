@@ -1,6 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
 import useAxiosPublic from "../hook/useAxiosPublic";
+import Swal from "sweetalert2";
 
 
 const GoogleLogin = () => {
@@ -23,8 +24,14 @@ const GoogleLogin = () => {
                 console.log(res.data)
                 navigate(location?.state? location.state:'/')
             })
+            Swal.fire("Success", "Successfully login.", "success");
             
         })
+        .catch(error=>{
+            console.log(error.message)
+            Swal.fire("error", "An error ocurred.", "error");
+          })
+          
 
     }
     return (

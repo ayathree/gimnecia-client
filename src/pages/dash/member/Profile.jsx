@@ -3,6 +3,7 @@ import useAuth from "../../../hook/useAuth";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import auth from "../../../firebase/firebase.config";
+import { Helmet } from "react-helmet-async";
 
 
 const Profile = () => {
@@ -49,7 +50,9 @@ const Profile = () => {
     }
     return (
         <div>
-            <h1>profile</h1>
+             <Helmet>
+                <title>GYMNECIA | User profile</title>
+            </Helmet>
             <div  >
            
             

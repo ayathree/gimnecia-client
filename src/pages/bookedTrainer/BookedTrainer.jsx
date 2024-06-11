@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { useState } from "react";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import useAuth from "../../hook/useAuth";
+import { Helmet } from "react-helmet-async";
 
 const BookedTrainer = () => {
     const axiosPublic = useAxiosPublic()
@@ -78,7 +79,9 @@ const BookedTrainer = () => {
 
     return (
         <div>
-            <h1>Book Trainer: {time.availableTime}</h1>
+             <Helmet>
+                <title>GYMNECIA | Book Trainer</title>
+            </Helmet>
             <div className="p-6 mt-24 py-12 bg-gray-400 dark:bg-violet-600 dark:text-gray-50">
                 <div className="container mx-auto">
                     <h1 className="font-semibold text-3xl mb-4">Our Packages</h1>

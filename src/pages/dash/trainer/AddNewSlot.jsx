@@ -4,6 +4,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import Select from "react-select";
+import { Helmet } from "react-helmet-async";
 
 const AddNewSlot = () => {
     const axiosSecure = useAxiosSecure();
@@ -90,6 +91,9 @@ const AddNewSlot = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>GYMNECIA | Add new slot</title>
+            </Helmet>
             <form onSubmit={handleNew} className="max-w-md mx-auto">
                 <div className="relative z-0 w-full mb-5 group">
                     <input 

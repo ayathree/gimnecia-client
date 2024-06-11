@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAuth from "../../../hook/useAuth";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MemberBookedTrainer = () => {
     const axiosSecure = useAxiosSecure();
@@ -47,7 +48,9 @@ const MemberBookedTrainer = () => {
 
     return (
         <div>
-            <h1>Booked: {memberBooked.length}</h1>
+             <Helmet>
+                <title>GYMNECIA | Booked trainers</title>
+            </Helmet>
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 justify-center">
                 {
                     memberBooked.map(booked => (

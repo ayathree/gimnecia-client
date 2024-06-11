@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const AllNewLetter = () => {
@@ -13,7 +14,9 @@ const AllNewLetter = () => {
     })
     return (
         <div>
-            <h1>newsLetter :{subscriber.length} </h1>
+             <Helmet>
+                <title>GYMNECIA | News letter subscriber</title>
+            </Helmet>
             <div>
                 
 

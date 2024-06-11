@@ -3,6 +3,8 @@ import gym from '../assets/gymdesign.webp'
 import { useForm } from "react-hook-form";
 import GoogleLogin from "../components/GoogleLogin";
 import useAuth from "../hook/useAuth";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
 
 
 const Login = () => {
@@ -28,14 +30,19 @@ const Login = () => {
           reset
           navigate(location?.state? location.state:'/')
         //   from,{replace:true}
+        Swal.fire("Success", "Successfully login.", "success");
         }
     )
     .catch(error=>{
         console.log(error.message)
+        Swal.fire("error", "An error ocurred.", "error");
       })
       }
     return (
         <div>
+             <Helmet>
+                <title>GYMNECIA | Login</title>
+            </Helmet>
             <div className="flex w-full mt-24 max-w-sm mx-auto overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">
     <div className="hidden bg-cover lg:block lg:w-1/2" style={{
         backgroundImage: `url(${gym})`

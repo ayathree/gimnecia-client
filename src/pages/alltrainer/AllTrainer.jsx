@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useTrainers from "../../hook/useTrainers";
 import { IoShareSocialSharp } from "react-icons/io5";
 import useMember from "../../hook/useMember";
+import { Helmet } from "react-helmet-async";
 
 
 const AllTrainer = () => {
@@ -9,8 +10,11 @@ const AllTrainer = () => {
     const [isMember] = useMember()
     return (
         <div className="mt-24">
-            <h1>All trainer:{trainer.length}</h1>
-           <Link to={'/trainerDetails'}> <button>Trainer Details</button></Link>
+             <Helmet>
+                <title>GYMNECIA | All Trainers</title>
+            </Helmet>
+            
+           
            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             {
                 trainer.map(item=><div key={item._id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">

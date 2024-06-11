@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const FinalTrainers = () => {
     const axiosSecure = useAxiosSecure();
@@ -44,7 +45,9 @@ const FinalTrainers = () => {
 
     return (
         <div>
-            <p>Trainee: {trainers.length}</p>
+             <Helmet>
+                <title>GYMNECIA | Trainers details</title>
+            </Helmet>
             <div>
                 <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

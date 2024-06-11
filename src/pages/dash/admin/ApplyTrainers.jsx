@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const ApplyTrainers = () => {
@@ -14,7 +15,9 @@ const ApplyTrainers = () => {
     })
     return (
         <div>
-            <h1>apply :{trainers.length}</h1>
+           <Helmet>
+                <title>GYMNECIA | Apply trainers</title>
+            </Helmet>
             <div>
                 
 

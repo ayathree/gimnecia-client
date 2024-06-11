@@ -4,6 +4,7 @@ import useAuth from "../../../hook/useAuth";
 import { MdOutlineDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const ManageSlot = () => {
     const axiosSecure = useAxiosSecure();
@@ -46,7 +47,9 @@ const ManageSlot = () => {
 
     return (
         <div>
-            <h1>Manage Slot: {booked.length}</h1>
+             <Helmet>
+                <title>GYMNECIA | Manage slot</title>
+            </Helmet>
             <div>
                 <div className="relative overflow-x-auto">
                     <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">

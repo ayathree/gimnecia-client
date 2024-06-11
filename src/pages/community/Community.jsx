@@ -1,25 +1,77 @@
-import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useState, useEffect } from "react";
 import useAxiosPublic from "../../hook/useAxiosPublic";
+import useAuth from "../../hook/useAuth";
+import { Helmet } from "react-helmet-async";
+import Swal from "sweetalert2";
+// import { useQuery } from "@tanstack/react-query";
 
 const Community = () => {
     const axiosPublic = useAxiosPublic();
+    const { user } = useAuth(); 
+    const [forum, setForum] = useState([]);
     const [expandedPosts, setExpandedPosts] = useState({});
 
-    const { data: forum = [] } = useQuery({
-        queryKey: ['forum'],
-        queryFn: async () => {
-            const res = await axiosPublic.get('/forum');
-            return res.data;
-        }
-    });
+    useEffect(() => {
+        const fetchForum = async () => {
+            try {
+                const res = await axiosPublic.get('/forum');
+                setForum(res.data);
+            } catch (error) {
+                console.error("Failed to fetch forum:", error);
+            }
+        };
+        fetchForum();
+    }, [axiosPublic]);
 
     const toggleExpand = (id) => {
         setExpandedPosts(prev => ({ ...prev, [id]: !prev[id] }));
     };
 
+    const handleUpvote = async (id) => {
+        if (user) {
+            try {
+                await axiosPublic.post(`/forum/${id}/upvote`);
+                setForum(prevForum => {
+                    return prevForum.map(post => {
+                        if (post._id === id) {
+                            return { ...post, upvotes: post.upvotes + 1 };
+                        }
+                        return post;
+                    });
+                });
+            } catch (error) {
+                console.error("Failed to upvote:", error);
+            }
+        } else {
+            Swal.fire("Warning", "need to login.", "warning");
+        }
+    };
+
+    const handleDownvote = async (id) => {
+        if (user) {
+            try {
+                await axiosPublic.post(`/forum/${id}/downvote`);
+                setForum(prevForum => {
+                    return prevForum.map(post => {
+                        if (post._id === id) {
+                            return { ...post, downvotes: post.downvotes + 1 };
+                        }
+                        return post;
+                    });
+                });
+            } catch (error) {
+                console.error("Failed to downvote:", error);
+            }
+        } else {
+            Swal.fire("Warning", "need to login.", "warning");
+        }
+    };
+
     return (
         <div>
+             <Helmet>
+                <title>GYMNECIA | Community</title>
+            </Helmet>
             <section className="py-6 sm:py-12 dark:bg-gray-100 dark:text-gray-800">
                 <div className="container p-6 mx-auto space-y-8">
                     <div className="space-y-2 text-center">
@@ -50,9 +102,22 @@ const Community = () => {
                                                 </button>
                                             )}
                                         </p>
-                                        <div className="flex flex-wrap justify-between pt-3 space-x-2 text-xs dark:text-gray-600">
-                                            <span>June 1, 2020</span>
-                                            <span>2.1K views</span>
+                                        
+                                        <div className="flex items-center space-x-2 mt-3">
+                                            <button 
+                                                onClick={() => handleUpvote(item._id)} 
+                                                className="bg-green-500 text-white px-2 py-1 rounded"
+                                            >
+                                                Upvote
+                                            </button>
+                                            <span>{item.upvotes}</span>
+                                            <button 
+                                                onClick={() => handleDownvote(item._id)} 
+                                                className="bg-red-500 text-white px-2 py-1 rounded"
+                                            >
+                                                Downvote
+                                            </button>
+                                            <span>{item.downvotes}</span>
                                         </div>
                                     </div>
                                 </article>

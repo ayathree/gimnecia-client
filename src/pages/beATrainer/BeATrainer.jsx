@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import trainer from '../../assets/trainer2.jpg';
 import useAuth from '../../hook/useAuth';
 import useAxiosPublic from '../../hook/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const BeATrainer = () => {
   const { user } = useAuth();
@@ -110,7 +111,9 @@ const BeATrainer = () => {
 
   return (
     <div>
-      <h1>Be a Trainer</h1>
+       <Helmet>
+                <title>GYMNECIA | Be a trainer</title>
+            </Helmet>
       <div className="flex w-full mt-24 mx-auto bg-white dark:bg-gray-800">
         <div className="hidden bg-cover lg:block lg:w-1/2" style={{
           backgroundImage: `url(${trainer})`

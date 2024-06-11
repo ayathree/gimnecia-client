@@ -3,6 +3,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useAuth from "../../../hook/useAuth";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 const ActivityLog = () => {
     const axiosSecure = useAxiosSecure();
@@ -37,6 +38,9 @@ const ActivityLog = () => {
 
     return (
         <div>
+             <Helmet>
+                <title>GYMNECIA | Activity log</title>
+            </Helmet>
             {!pending && !rejected && (
                 <p className="text-6xl font-bold">You Have Not Make Any Request Till Now </p>
             )}

@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 
 const AddNewName = () => {
@@ -27,6 +28,9 @@ const AddNewName = () => {
     }
     return (
         <div>
+             <Helmet>
+                <title>GYMNECIA | Add new class</title>
+            </Helmet>
             
 
 <form onSubmit={handleSubmit} className="max-w-md mt-24 mx-auto">

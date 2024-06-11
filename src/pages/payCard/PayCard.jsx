@@ -2,6 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useLoaderData } from "react-router-dom";
 import CheckoutForm from "./CheckoutForm";
+import { Helmet } from "react-helmet-async";
 
 
 const PayCard = () => {
@@ -11,7 +12,9 @@ const PayCard = () => {
     const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK)
     return (
         <div>
-            <h1>paycard</h1>
+             <Helmet>
+                <title>GYMNECIA | Payment</title>
+            </Helmet>
             {
    <div className="flex flex-col gap-20">
     <div>
