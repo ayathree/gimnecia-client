@@ -3,9 +3,11 @@ import { NavLink,  Outlet } from "react-router-dom";
 import useAdmin from "../hook/useAdmin";
 import useTrainer from "../hook/useTrainer";
 import useMember from "../hook/useMember";
+// import useAuth from "../hook/useAuth";
 
 const Dashboard = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    // const {user}=useAuth()
 
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
@@ -94,12 +96,7 @@ const Dashboard = () => {
                                         <span>Add New Slot</span>
                                     </a></NavLink>
                                  </li>
-                                 <li className="rounded-sm">
-                                     <NavLink to={'/dashboard/addNewForum'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
-                                        
-                                        <span>Add New Forum</span>
-                                    </a></NavLink>
-                                 </li>
+                                 
                                 
                                  
                                     </> 
@@ -131,8 +128,17 @@ const Dashboard = () => {
                                  </li>
                                     </>
                                 }
+                               
                                 {/* shared */}
                                <hr />
+                               {
+                                    !isMember && <li className="rounded-sm">
+                                    <NavLink to={'/dashboard/addNewForum'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                       
+                                       <span>Add New Forum</span>
+                                   </a></NavLink>
+                                </li>
+                                }
                                <li className="rounded-sm">
                                     <NavLink to={'/'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import { Link } from "react-router-dom";
 
-const AllclassNamees = () => {
+const AllClasses = () => {
     const axiosPublic = useAxiosPublic();
 
     const { data: trainers = [] } = useQuery({
@@ -79,4 +79,4 @@ const AllclassNamees = () => {
     );
 };
 
-export default AllclassNamees;
+export default AllClasses;

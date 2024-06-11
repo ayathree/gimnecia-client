@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hook/useAxiosSecure";
 
 
-const AddNewclassName = () => {
+const AddNewName = () => {
     const axiosSecure = useAxiosSecure()
     const handleSubmit=e=>{
         e.preventDefault()
@@ -54,4 +54,4 @@ const AddNewclassName = () => {
     );
 };
 
-export default AddNewclassName;
+export default AddNewName;

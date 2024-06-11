@@ -163,7 +163,7 @@ export const router = createBrowserRouter([
         },
         {
           path:'addNewForum',
-          element:<TrainerRouter><AddNewForum></AddNewForum></TrainerRouter>
+          element:<PrivateRoute><AddNewForum></AddNewForum></PrivateRoute>
         },
         {
           path:'bookeDetails/:id',
