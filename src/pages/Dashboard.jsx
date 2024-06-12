@@ -44,37 +44,37 @@ const Dashboard = () => {
                                     isAdmin &&
                                    <>
                                     <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/allUsers'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/allUsers'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>All User</span>
                                    </a></NavLink>
                                 </li>
                                     <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/allNewsSub'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/allNewsSub'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>All NewsLetter Subscriber</span>
                                    </a></NavLink>
                                 </li>
                                 <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/allTrainerConfirmed'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/allTrainerConfirmed'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>All Trainer</span>
                                    </a></NavLink>
                                 </li>
                                 <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/appliedTrainer'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/appliedTrainer'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>Applied Trainer</span>
                                    </a></NavLink>
                                 </li>
                                 <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/balance'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/balance'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>Balance</span>
                                    </a></NavLink>
                                 </li>
                                 <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/addNewClass'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/addNewClass'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>Add New Class</span>
                                    </a></NavLink>
@@ -85,13 +85,13 @@ const Dashboard = () => {
                                     isTrainer  &&
                                     <>
                                      <li className="rounded-sm">
-                                     <NavLink to={'/dashboard/manageSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                     <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/manageSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
                                         <span>Manage Slot</span>
                                     </a></NavLink>
                                  </li>
                                      <li className="rounded-sm">
-                                     <NavLink to={'/dashboard/addNewSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                     <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/addNewSlot'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
                                         <span>Add New Slot</span>
                                     </a></NavLink>
@@ -108,20 +108,20 @@ const Dashboard = () => {
                                     isMember && 
                                     <>
                                     <li className="rounded-sm">
-                                    <NavLink  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''}  to={'/dashboard/profile'}> <a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                          
                                          <span>User Profile</span>
                                      </a></NavLink>
                                  </li>
                                 
                                  <li className="rounded-sm">
-                                     <NavLink to={'/dashboard/activity'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                     <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/activity'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
                                         <span>Activity Log</span>
                                     </a></NavLink>
                                  </li>
                                  <li className="rounded-sm">
-                                     <NavLink to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                     <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/recommended'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                         
                                         <span>Booked trainers</span>
                                     </a></NavLink>
@@ -133,14 +133,14 @@ const Dashboard = () => {
                                <hr />
                                {
                                     !isMember && <li className="rounded-sm">
-                                    <NavLink to={'/dashboard/addNewForum'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/dashboard/addNewForum'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>Add New Forum</span>
                                    </a></NavLink>
                                 </li>
                                 }
                                <li className="rounded-sm">
-                                    <NavLink to={'/'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
+                                    <NavLink className={({isActive})=>isActive?'text-white ':''} to={'/'}><a rel="noopener noreferrer" href="#" className="flex items-center p-2 space-x-3 rounded-md">
                                        
                                        <span>Home</span>
                                    </a></NavLink>

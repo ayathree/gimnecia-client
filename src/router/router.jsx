@@ -48,27 +48,27 @@ export const router = createBrowserRouter([
         {
           path:'/trainerDetails/:id',
           element:<TrainerDetails></TrainerDetails>,
-          loader:({params})=>fetch(`http://localhost:5000/confirmedTrainer/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-server-sandy.vercel.app/confirmedTrainer/${params.id}`)
 
         },
         {
           path:'/bookedTrainer/:id',
           element:<PrivateRoute><BookedTrainer></BookedTrainer></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/trainee/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-server-sandy.vercel.app/trainee/${params.id}`)
 
 
         },
         {
           path:'/payment/:id',
           element:<PrivateRoute> <Payment></Payment></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/bookedUser/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-server-sandy.vercel.app/bookedUser/${params.id}`)
 
 
         },
         {
           path:'/payCard/:id',
           element:<PrivateRoute><PayCard></PayCard></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/bookeee/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-server-sandy.vercel.app/bookeee/${params.id}`)
 
 
         },
@@ -132,8 +132,8 @@ export const router = createBrowserRouter([
         },
         {
           path:'applicantDetails/:id',
-          element:<AdminRoute> <ApplicantDetails></ApplicantDetails> </AdminRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/trainers/${params.id}`)
+          element:<AdminRoute><ApplicantDetails></ApplicantDetails></AdminRoute>,
+          loader:({params})=>fetch(`https://assignment-12-server-sandy.vercel.app/trainers/${params.id}`)
 
 
         },
@@ -168,7 +168,7 @@ export const router = createBrowserRouter([
         {
           path:'bookeDetails/:id',
           element:<TrainerRouter><BookedDetails></BookedDetails></TrainerRouter>,
-          loader:({params})=>fetch(`http://localhost:5000/bookeee/${params.id}`)
+          loader:({params})=>fetch(`https://assignment-12-server-sandy.vercel.app/bookeee/${params.id}`)
           
         }
       ]

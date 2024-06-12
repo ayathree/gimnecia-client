@@ -49,13 +49,16 @@ const Balance = () => {
        <Helmet>
                 <title>GYMNECIA | Balance</title>
             </Helmet>
+            <h1 className="text-center text-2xl ">Total Balance</h1>
       <h1>Balance: ${stats.revenue || 0}</h1>
+      <h1 className="text-center text-2xl mt-24">Transaction ID</h1>
       <div className="mt-24">
         <p>Last transaction IDs:</p>
-        {transactions.map(tran => (
+        {transactions.slice(0,6).map(tran => (
           <p key={tran._id}>{tran.transactionId}</p>
         ))}
       </div>
+      <h1 className="text-center text-2xl mt-24">Total newsletter subscriber vs total payed member</h1>
       <div>
         <PieChart width={400} height={400}>
           <Pie

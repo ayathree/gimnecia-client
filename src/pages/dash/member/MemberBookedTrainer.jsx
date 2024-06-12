@@ -51,6 +51,14 @@ const MemberBookedTrainer = () => {
              <Helmet>
                 <title>GYMNECIA | Booked trainers</title>
             </Helmet>
+            <div>
+                {
+                    memberBooked.length === 0  && (
+                        <p className="text-6xl font-bold">You have not booked any trainer or class yet</p>
+                    )
+                    
+                }
+            </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 justify-center">
                 {
                     memberBooked.map(booked => (
